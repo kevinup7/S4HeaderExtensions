@@ -24,13 +24,10 @@ extension Headers {
     */
     public var trailer: [String]? {
         get {
-            if let headerValues = headers["Trailer"] {
-                return String.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return String.values(fromHeader: headers["Trailer"])
         }
         set {
-            headers["Trailer"] = newValue?.headerValues
+            headers["Trailer"] = newValue?.header
         }
     }
 }

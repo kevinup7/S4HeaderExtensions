@@ -33,7 +33,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Content-Location"] = newValue?.headerValues
+            headers["Content-Location"] = newValue?.header
         }
     }
 }

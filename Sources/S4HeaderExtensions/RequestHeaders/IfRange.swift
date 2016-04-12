@@ -42,7 +42,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["If-Range"] = newValue?.headerValues
+            headers["If-Range"] = newValue?.header
         }
     }
 }
@@ -64,7 +64,7 @@ extension IfRange: HeaderValueInitializable {
     }
 }
 
-extension IfRange: HeaderValueRepresentableType {
+extension IfRange: HeaderValueRepresentable {
     public var headerValue: String {
         switch self {
         case .tag(let tag):

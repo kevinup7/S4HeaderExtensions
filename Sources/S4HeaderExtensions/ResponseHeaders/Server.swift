@@ -27,7 +27,7 @@ extension Headers {
             return headers["Server"]?.first
         }
         set {
-            headers["Server"] = newValue?.headerValues
+            headers["Server"] = newValue?.header
         }
     }
 }

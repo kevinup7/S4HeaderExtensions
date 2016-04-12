@@ -25,12 +25,12 @@ extension Headers {
     public var acceptLanguage: [QualityValue<String>]? {
         get {
             if let headerValues = headers["Accept-Language"] {
-                return QualityValue<String>.values(fromHeaderValues: headerValues)
+                return QualityValue<String>.values(fromHeader: headerValues)
             }
             return nil
         }
         set {
-            headers["Accept-Language"] = newValue?.headerValues
+            headers["Accept-Language"] = newValue?.header
         }
     }
 }

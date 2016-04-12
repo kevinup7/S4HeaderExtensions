@@ -27,7 +27,7 @@ extension Headers {
             return headers["User-Agent"]?.first
         }
         set {
-            headers["User-Agent"] = newValue?.headerValues
+            headers["User-Agent"] = newValue?.header
         }
     }
 }

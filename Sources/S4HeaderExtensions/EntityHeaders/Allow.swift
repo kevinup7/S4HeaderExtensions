@@ -30,18 +30,12 @@ extension Headers {
 
         - seealso: [RFC7231](https://tools.ietf.org/html/rfc7231#section-7.4.1)
     */
-    public var allow: Set<Method>? {
+    public var allow: [Method]? {
         get {
-            if let headerValues = headers["Allow"] {
-                if let methodArray = Method.values(fromHeaderValues: headerValues) {
-                    return Set<Method>(methodArray)
-                }
-                return nil
-            }
-            return nil
+            return Method.values(fromHeader: headers["Allow"])
         }
         set {
-            headers["Allow"] = newValue?.headerValues
+            headers["Allow"] = newValue?.header
         }
     }
 }

@@ -25,7 +25,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Date"] = newValue?.headerValues
+            headers["Date"] = newValue?.header
         }
     }
 }

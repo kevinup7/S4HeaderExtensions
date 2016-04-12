@@ -27,13 +27,10 @@ extension Headers {
      */
     public var cacheControl: [CacheControl]? {
         get {
-            if let headerValues = headers["Cache-Control"] {
-                return CacheControl.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return CacheControl.values(fromHeader: headers["Cache-Control"])
         }
         set {
-            headers["Cache-Control"] = newValue?.headerValues
+            headers["Cache-Control"] = newValue?.header
         }
     }
 }
@@ -106,7 +103,7 @@ extension CacheControl: HeaderValueInitializable {
     }
 }
 
-extension CacheControl: HeaderValueRepresentableType {
+extension CacheControl: HeaderValueRepresentable {
     public var headerValue: String {
         switch self {
         case .maxAge(let age):

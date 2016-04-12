@@ -27,7 +27,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Max-Forwards"] = newValue?.description.headerValues
+            headers["Max-Forwards"] = newValue?.description.header
         }
     }
 }

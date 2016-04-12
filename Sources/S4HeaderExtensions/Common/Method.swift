@@ -28,7 +28,7 @@ extension Method: HeaderValueInitializable {
     }
 }
 
-extension Method: HeaderValueRepresentableType {
+extension Method: HeaderValueRepresentable {
     public var headerValue: String {
         return self.description
     }

@@ -27,7 +27,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Pragma"] = newValue?.headerValues
+            headers["Pragma"] = newValue?.header
         }
     }
 }
@@ -52,7 +52,7 @@ extension Pragma: HeaderValueInitializable {
     }
 }
 
-extension Pragma: HeaderValueRepresentableType {
+extension Pragma: HeaderValueRepresentable {
     public var headerValue: String {
         switch self {
         case .noCache:

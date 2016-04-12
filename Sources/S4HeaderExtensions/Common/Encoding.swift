@@ -29,7 +29,7 @@ extension Encoding: HeaderValueInitializable {
     }
 }
 
-extension Encoding: HeaderValueRepresentableType {
+extension Encoding: HeaderValueRepresentable {
     public var headerValue: String {
         switch self {
         case .chunked:

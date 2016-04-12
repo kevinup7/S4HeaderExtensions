@@ -25,13 +25,10 @@ extension Headers {
     */
     public var transferEncoding: [Encoding]? {
         get {
-            if let headerValues = headers["Transfer-Encoding"] {
-                return Encoding.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return Encoding.values(fromHeader: headers["Transfer-Encoding"])
         }
         set {
-            headers["Transfer-Encoding"] = newValue?.headerValues
+            headers["Transfer-Encoding"] = newValue?.header
         }
     }
 }

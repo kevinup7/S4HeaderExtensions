@@ -30,7 +30,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Content-Length"] = newValue?.description.headerValues
+            headers["Content-Length"] = newValue?.description.header
         }
     }
 }

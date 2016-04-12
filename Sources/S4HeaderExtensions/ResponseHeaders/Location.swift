@@ -24,7 +24,7 @@ extension Headers {
             return headers["Location"]?.first
         }
         set {
-            headers["Host"] = newValue?.headerValues
+            headers["Host"] = newValue?.header
         }
     }
 }

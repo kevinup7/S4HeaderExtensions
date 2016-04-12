@@ -37,7 +37,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Retry-After"] = newValue?.headerValues
+            headers["Retry-After"] = newValue?.header
         }
     }
 }
@@ -59,7 +59,7 @@ extension RetryAfter: HeaderValueInitializable {
     }
 }
 
-extension RetryAfter: HeaderValueRepresentableType {
+extension RetryAfter: HeaderValueRepresentable {
     public var headerValue: String {
         switch self {
         case .seconds(let seconds):

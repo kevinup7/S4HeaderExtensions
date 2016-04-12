@@ -5,10 +5,14 @@ public protocol HeaderValueInitializable {
 }
 
 extension HeaderValueInitializable {
-    public static func values(fromHeaderValues values: HeaderValues) -> [Self]? {
-        let values = values.map({ Self.init(headerValue: $0) }).flatMap { $0 }
+    public static func values(fromHeader header: Header?) -> [Self]? {
+        guard let header = header else {
+            return nil
+        }
+        
+        let values = header.map({ Self.init(headerValue: $0) }).flatMap { $0 }
         return values.count > 0 ? values : nil
     }
 }
 
-public typealias HeaderType = protocol<HeaderValueInitializable, HeaderValueRepresentableType, Equatable>
+public typealias HeaderType = protocol<HeaderValueInitializable, HeaderValueRepresentable, Equatable>

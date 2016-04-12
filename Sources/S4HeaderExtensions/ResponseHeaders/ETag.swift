@@ -31,13 +31,10 @@ extension Headers {
     */
     public var eTag: EntityTag? {
         get {
-            if let headerValue = headers["ETag"]?.first {
-                return EntityTag(headerValue: headerValue)
-            }
-            return nil
+            return headers["ETag"]?.first.flatMap({ EntityTag(headerValue: $0) })
         }
         set {
-            headers["Etag"] = newValue?.headerValues
+            headers["Etag"] = newValue?.header
         }
     }
 }

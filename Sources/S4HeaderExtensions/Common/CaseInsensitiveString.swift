@@ -1,6 +1,6 @@
 import S4
 
-extension CaseInsensitiveString: HeaderValueRepresentableType {
+extension CaseInsensitiveString: HeaderValueRepresentable {
     public var headerValue: String {
         return self.string
     }

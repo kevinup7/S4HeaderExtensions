@@ -1,18 +1,17 @@
 import S4
 
-public protocol HeaderValueRepresentableType {
+public protocol HeaderValueRepresentable: HeaderRepresentable {
     var headerValue: String { get }
-    var headerValues: HeaderValues { get }
 }
 
-extension HeaderValueRepresentableType {
-    public var headerValues: HeaderValues {
-        return HeaderValues(self.headerValue)
+extension HeaderValueRepresentable {
+    public var header: Header {
+        return Header(self.headerValue)
     }
 }
 
-extension Sequence where Iterator.Element: HeaderValueRepresentableType {
-    var headerValues: HeaderValues {
-        return HeaderValues(self.map({ $0.headerValue }))
+extension Sequence where Iterator.Element: HeaderValueRepresentable {
+    var header: Header {
+        return Header(self.map({ $0.headerValue }))
     }
 }
