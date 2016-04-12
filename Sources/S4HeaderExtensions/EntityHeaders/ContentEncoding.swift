@@ -23,13 +23,10 @@ extension Headers {
     */
     public var contentEncoding: [Encoding]? {
         get {
-            if let headerValues = headers["Content-Encoding"] {
-                return Encoding.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return Encoding.values(fromHeader: headers["Content-Encoding"])
         }
         set {
-            headers["Content-Encoding"] = newValue?.headerValues
+            headers["Content-Encoding"] = newValue?.header
         }
     }
 }

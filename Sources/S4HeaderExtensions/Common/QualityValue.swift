@@ -44,7 +44,7 @@ public struct QualityValue<Element: HeaderType>: Equatable {
     }
 }
 
-extension QualityValue: HeaderValueRepresentableType {
+extension QualityValue: HeaderValueRepresentable {
     public var headerValue: String {
         return quality == 1000 ? value.headerValue : "\(value.headerValue);q=\(qualityString)"
     }

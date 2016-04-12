@@ -30,7 +30,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Expires"] = newValue?.headerValues
+            headers["Expires"] = newValue?.header
         }
     }
 }

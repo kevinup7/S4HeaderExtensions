@@ -30,13 +30,10 @@ extension Headers {
     */
     public var upgrade: [UpgradeProtocol]? {
         get {
-            if let headerValues = headers["Upgrade"] {
-                return UpgradeProtocol.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return UpgradeProtocol.values(fromHeader: headers["Upgrade"])
         }
         set {
-            headers["Upgrade"] = newValue?.headerValues
+            headers["Upgrade"] = newValue?.header
         }
     }
 }
@@ -65,7 +62,7 @@ extension UpgradeProtocol: HeaderValueInitializable {
     }
 }
 
-extension UpgradeProtocol: HeaderValueRepresentableType {
+extension UpgradeProtocol: HeaderValueRepresentable {
     public var headerValue: String {
         if let version = version {
             return "\(name)/\(version)"

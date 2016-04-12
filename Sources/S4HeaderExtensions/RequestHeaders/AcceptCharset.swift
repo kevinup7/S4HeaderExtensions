@@ -30,16 +30,10 @@ extension Headers {
      */
     public var acceptCharset: [QualityValue<String>]? {
         get {
-            if let headerValues = headers["Accept-Charset"] {
-                if let values = QualityValue<String>.values(fromHeaderValues: headerValues) {
-                    return values
-                }
-                return nil
-            }
-            return nil
+            return QualityValue<String>.values(fromHeader: headers["Accept-Charset"])
         }
         set {
-            headers["Accept-Charset"] = newValue?.headerValues
+            headers["Accept-Charset"] = newValue?.header
         }
     }
 }

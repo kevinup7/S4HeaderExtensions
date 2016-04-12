@@ -6,15 +6,15 @@ public enum EntityTagMatch: Equatable {
 }
 
 extension EntityTagMatch {
-    public init?(headerValues: HeaderValues) {
-        guard let first = headerValues.first else {
+    public init?(header: Header) {
+        guard let first = header.first else {
             return nil
         }
 
         if first == "*" {
             self = .any
         } else {
-            if let tags = EntityTag.values(fromHeaderValues: headerValues) {
+            if let tags = EntityTag.values(fromHeader: header) {
                 self = .tags(tags)
             } else {
                 return nil
@@ -23,17 +23,17 @@ extension EntityTagMatch {
     }
 }
 
-extension EntityTagMatch: HeaderValueRepresentableType {
+extension EntityTagMatch: HeaderValueRepresentable {
     public var headerValue: String {
         return ""
     }
 
-    public var headerValues: HeaderValues {
+    public var header: Header {
         switch self {
         case .any:
             return "*"
         case .tags(let tags):
-            return tags.headerValues
+            return tags.header
         }
     }
 }

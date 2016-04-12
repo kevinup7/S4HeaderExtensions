@@ -26,7 +26,7 @@ extension Headers {
             return headers["Referer"]?.first
         }
         set {
-            headers["Referer"] = newValue?.headerValues
+            headers["Referer"] = newValue?.header
         }
     }
 }

@@ -10,8 +10,8 @@ extension NSDate {
         return S4DateFormatter.formatter.headerValue(forDate: self)
     }
 
-    public var headerValues: HeaderValues {
-        return HeaderValues(headerValue)
+    public var header: Header {
+        return Header(headerValue)
     }
 }
 

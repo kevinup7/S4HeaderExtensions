@@ -25,7 +25,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Expect"] = newValue?.headerValues
+            headers["Expect"] = newValue?.header
         }
     }
 }
@@ -45,7 +45,7 @@ extension Expect: HeaderValueInitializable {
     }
 }
 
-extension Expect: HeaderValueRepresentableType {
+extension Expect: HeaderValueRepresentable {
     public var headerValue: String {
         return self.headerValue
     }

@@ -25,13 +25,10 @@ extension Headers {
     */
     public var contentLanguage: [String]? {
         get {
-            if let headerValues = headers["Content-Language"] {
-                return String.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return String.values(fromHeader: headers["Content-Language"])
         }
         set {
-            headers["Content-Language"] = newValue?.headerValues
+            headers["Content-Language"] = newValue?.header
         }
     }
 }

@@ -24,13 +24,10 @@ extension Headers {
     */
     public var via: [ViaHeader]? {
         get {
-            if let headerValues = headers["Via"] {
-                return ViaHeader.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return ViaHeader.values(fromHeader: headers["Via"])
         }
         set {
-            headers["Via"] = newValue?.headerValues
+            headers["Via"] = newValue?.header
         }
     }
 }
@@ -92,7 +89,7 @@ extension ViaHeader: HeaderValueInitializable {
     }
 }
 
-extension ViaHeader: HeaderValueRepresentableType {
+extension ViaHeader: HeaderValueRepresentable {
     public var headerValue: String {
         var value = "\(protocolName)/\(protocolVersion) \(receivedBy)"
 

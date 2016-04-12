@@ -28,12 +28,12 @@ extension Headers {
     public var vary: Vary? {
         get {
             if let headerValues = headers["Vary"] {
-                return Vary(headerValues: headerValues)
+                return Vary(header: headerValues)
             }
             return nil
         }
         set {
-            headers["Vary"] = newValue?.headerValues
+            headers["Vary"] = newValue?.header
         }
     }
 }
@@ -44,15 +44,15 @@ public enum Vary: Equatable {
 }
 
 extension Vary {
-    public init?(headerValues: HeaderValues) {
-        guard let first = headerValues.first else {
+    public init?(header: Header) {
+        guard let first = header.first else {
             return nil
         }
 
         if first == "*" {
             self = .any
         } else {
-            if let strings = CaseInsensitiveString.values(fromHeaderValues: headerValues) {
+            if let strings = CaseInsensitiveString.values(fromHeader: header) {
                 self = .fields(strings)
             } else {
                 return nil
@@ -61,17 +61,17 @@ extension Vary {
     }
 }
 
-extension Vary: HeaderValueRepresentableType {
+extension Vary: HeaderValueRepresentable {
     public var headerValue: String {
         return ""
     }
 
-    public var headerValues: HeaderValues {
+    public var header: Header {
         switch  self {
         case .any:
             return "*"
         case .fields(let fields):
-            return fields.headerValues
+            return fields.header
         }
     }
 }

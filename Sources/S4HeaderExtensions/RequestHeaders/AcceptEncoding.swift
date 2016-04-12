@@ -1,7 +1,5 @@
 import S4
 
-// TODO: Replace String with an actual enum using the values from:
-// http://www.iana.org/assignments/character-sets/character-sets.xhtml
 extension Headers {
 
     /**
@@ -35,16 +33,10 @@ extension Headers {
      */
     public var acceptEncoding: [QualityValue<Encoding>]? {
         get {
-            if let headerValues = headers["Accept-Encoding"] {
-                if let values = QualityValue<Encoding>.values(fromHeaderValues: headerValues) {
-                    return values
-                }
-                return nil
-            }
-            return nil
+            return QualityValue<Encoding>.values(fromHeader: headers["Accept-Encoding"])
         }
         set {
-            headers["Accept-Encoding"] = newValue?.headerValues
+            headers["Accept-Encoding"] = newValue?.header
         }
     }
 }

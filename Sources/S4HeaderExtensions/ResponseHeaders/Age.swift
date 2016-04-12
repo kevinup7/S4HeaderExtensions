@@ -25,7 +25,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Age"] = newValue?.description.headerValues
+            headers["Age"] = newValue?.description.header
         }
     }
 }

@@ -21,16 +21,10 @@ extension Headers {
     */
     public var te: [QualityValue<Encoding>]? {
         get {
-            if let headerValues = headers["TE"] {
-                if let values = QualityValue<Encoding>.values(fromHeaderValues: headerValues) {
-                    return values
-                }
-                return nil
-            }
-            return nil
+            return QualityValue<Encoding>.values(fromHeader: headers["TE"])
         }
         set {
-            headers["TE"] = newValue?.headerValues
+            headers["TE"] = newValue?.header
         }
     }
 }

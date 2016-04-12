@@ -36,13 +36,10 @@ extension Headers {
     */
     public var connection: [ConnectionType]? {
         get {
-            if let headerValues = headers["Connection"] {
-                return ConnectionType.values(fromHeaderValues: headerValues)
-            }
-            return nil
+            return ConnectionType.values(fromHeader: headers["Connection"])
         }
         set {
-            headers["Connection"] = newValue?.headerValues
+            headers["Connection"] = newValue?.header
         }
     }
 }
@@ -67,7 +64,7 @@ extension ConnectionType: HeaderValueInitializable {
     }
 }
 
-extension ConnectionType: HeaderValueRepresentableType {
+extension ConnectionType: HeaderValueRepresentable {
     public var headerValue: String {
         switch self {
         case .close:

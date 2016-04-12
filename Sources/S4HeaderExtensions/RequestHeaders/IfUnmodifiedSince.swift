@@ -28,7 +28,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["If-Unmodified-Since"] = newValue?.headerValues
+            headers["If-Unmodified-Since"] = newValue?.header
         }
     }
 }

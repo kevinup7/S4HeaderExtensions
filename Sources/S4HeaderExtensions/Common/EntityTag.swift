@@ -47,7 +47,7 @@ extension EntityTag: HeaderValueInitializable {
     }
 }
 
-extension EntityTag: HeaderValueRepresentableType {
+extension EntityTag: HeaderValueRepresentable {
     public var headerValue: String {
         if weak {
             return "W/\"\(tag)\""
@@ -83,3 +83,6 @@ private func validateEntityTag(tag: String) -> Bool {
     }
     return true
 }
+
+
+

@@ -40,12 +40,12 @@ extension Headers {
     public var ifNoneMatch: EntityTagMatch? {
         get {
             if let headerValues = headers["If-None-Match"] {
-                return EntityTagMatch(headerValues: headerValues)
+                return EntityTagMatch(header: headerValues)
             }
             return nil
         }
         set {
-            headers["If-None-Match"] = newValue?.headerValues
+            headers["If-None-Match"] = newValue?.header
         }
     }
 }
