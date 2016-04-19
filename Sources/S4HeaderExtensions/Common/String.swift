@@ -9,7 +9,7 @@ extension String {
 //        return nil
 //    }
 
-    func between(left: String, _ right: String) -> String? {
+    func between(_ left: String, _ right: String) -> String? {
         var string = self.replacingOccurrences(of: left, with: "")
         string = string.replacingOccurrences(of: right, with: "")
 
@@ -17,7 +17,7 @@ extension String {
     }
 
     func trim() -> String {
-        return self.trimmingCharacters(in: NSCharacterSet.whitespaceAndNewline())
+        return self.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines())
     }
 }
 

@@ -35,10 +35,10 @@ extension EntityTag: HeaderValueInitializable {
             return nil
         }
 
-        if string.hasPrefix("W/\"") && string.utf8.count >= 4 && validateEntityTag(string.between("W/\"", "\"")!) {
+        if string.hasPrefix("W/\"") && string.utf8.count >= 4 && validate(entityTag: string.between("W/\"", "\"")!) {
             self.tag = string.between("W/\"", "\"")!
             self.weak = true
-        } else if string.hasPrefix("\"") && validateEntityTag(string.between("\"", "\"")!)  {
+        } else if string.hasPrefix("\"") && validate(entityTag: string.between("\"", "\"")!)  {
             self.tag = string.between("\"", "\"")!
             self.weak = false
         } else {
@@ -71,7 +71,7 @@ public func ==(lhs: EntityTag, rhs: EntityTag) -> Bool {
     return lhs.tag == rhs.tag && lhs.weak == rhs.weak
 }
 
-private func validateEntityTag(tag: String) -> Bool {
+private func validate(entityTag tag: String) -> Bool {
     let bytes = [UInt8](tag.utf8)
 
     for byte in bytes {

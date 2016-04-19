@@ -50,7 +50,7 @@ public struct UpgradeProtocol: Equatable {
 
 extension UpgradeProtocol: HeaderValueInitializable {
     public init?(headerValue: String) {
-        let split = headerValue.componentsSeparated(by: "/")
+        let split = headerValue.components(separatedBy: "/")
 
         if split.count == 2 {
             self = UpgradeProtocol(name: split[0].trim(), version: split[1].trim())

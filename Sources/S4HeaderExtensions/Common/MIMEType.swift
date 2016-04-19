@@ -24,18 +24,18 @@ extension MIMEType: CustomStringConvertible {
 
 extension MIMEType: HeaderValueInitializable {
     public init?(headerValue: String) {
-        var tokens = headerValue.componentsSeparated(by: ";")
+        var tokens = headerValue.components(separatedBy: ";")
         var parameters: [String: String] = [:]
 
         let mediaType = tokens.removeFirst()
-        let mediaTypeTokens = mediaType.componentsSeparated(by: "/")
+        let mediaTypeTokens = mediaType.components(separatedBy: "/")
 
         guard mediaTypeTokens.count == 2 else {
             return nil
         }
 
         for parameterString in tokens {
-            let parameterTokens = parameterString.trim().componentsSeparated(by: "=")
+            let parameterTokens = parameterString.trim().components(separatedBy: "=")
 
             if parameterTokens.count == 2 {
                 parameters[parameterTokens[0]] = parameterTokens[1]

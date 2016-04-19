@@ -60,7 +60,7 @@ public struct ViaHeader: Equatable {
 
 extension ViaHeader: HeaderValueInitializable {
     public init?(headerValue: String) {
-        let components = headerValue.componentsSeparated(by: " ")
+        let components = headerValue.components(separatedBy: " ")
 
         guard components.count >= 2 else {
             return nil
@@ -68,7 +68,7 @@ extension ViaHeader: HeaderValueInitializable {
 
         let protocolString = components[0]
 
-        let protocolComponents = protocolString.componentsSeparated(by: "/")
+        let protocolComponents = protocolString.components(separatedBy: "/")
         if protocolComponents.count == 1 {
             self.protocolName = "HTTP"
             self.protocolVersion = protocolComponents[0]

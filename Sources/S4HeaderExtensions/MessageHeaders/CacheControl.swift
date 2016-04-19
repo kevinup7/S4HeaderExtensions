@@ -54,7 +54,7 @@ extension CacheControl: HeaderValueInitializable {
     public init?(headerValue: String) {
         let trimmed = headerValue.trim()
         if trimmed.contains("=") {
-            let split = trimmed.componentsSeparated(by: "=")
+            let split = trimmed.components(separatedBy: "=")
 
             guard split.count == 2 else {
                 return nil

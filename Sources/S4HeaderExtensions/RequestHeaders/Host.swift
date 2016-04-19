@@ -44,7 +44,7 @@ extension URI {
 
 extension URI: HeaderValueInitializable {
     public init?(headerValue: String) {
-        let components = headerValue.componentsSeparated(by: ":")
+        let components = headerValue.components(separatedBy: ":")
 
         guard components.count <= 2 else {
             return nil

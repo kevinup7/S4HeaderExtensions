@@ -52,7 +52,7 @@ extension QualityValue: HeaderValueRepresentable {
 
 extension QualityValue: HeaderValueInitializable {
     public init?(headerValue: String) {
-        var split = headerValue.componentsSeparated(by: ";")
+        var split = headerValue.components(separatedBy: ";")
 
         if split.count >= 2 {
             // Q value could be any of the values
@@ -65,7 +65,7 @@ extension QualityValue: HeaderValueInitializable {
                 guard let qFloat = Float(floatString) else {
                     return nil
                 }
-                let qValue = qualityValueFromFloat(qFloat)
+                let qValue = qualityValue(fromFloat: qFloat)
 
 
                 // Once Q Value is parsed, recreate header string with it removed
@@ -99,7 +99,7 @@ public func == <E:HeaderType> (lhs:QualityValue<E>, rhs:QualityValue<E>) -> Bool
     return lhs.quality == rhs.quality && lhs.value == rhs.value
 }
 
-private func qualityValueFromFloat(float: Float) -> UInt16 {
+private func qualityValue(fromFloat float: Float) -> UInt16 {
     if float <= 0.0 {
         return 0
     } else if float >= 1.0 {
