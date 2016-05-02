@@ -25,6 +25,7 @@ Request/Response Headers:
 - Via
 
 Request Headers:
+- Accept
 - Accept-Charset
 - Accept-Encoding
 - Accept-Language
@@ -37,11 +38,13 @@ Request Headers:
 - If-Range
 - If-Unmodified-Since
 - Max-Forwards
+- Range
 - Referer
 - TE
 - User-Agent
 
 Response Headers:
+- Accept-Ranges
 - Age
 - ETag
 - Location
@@ -55,18 +58,15 @@ Entity Headers:
 - Content-Language
 - Content-Length
 - Content-Location
+- Content-Range
 - Expires
 - Last-Modified
 
 Not Yet Implemented:
-- Accept
-- Accept-Ranges
 - Authorization
-- Content-Range
 - Content-Type
 - Proxy-Authenticate
 - Proxy-Authorization
-- Range
 - Warning
 - WWW-Authenticate
 
