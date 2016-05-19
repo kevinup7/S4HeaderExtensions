@@ -101,7 +101,7 @@ public struct ContentRange: Equatable {
 
     /// Range of bytes being sent. Nil value indicates an unsatisfied-range value
     /// (e.g. when returning a `416` response)
-    public let range: Range<Int64>?
+    public let range: CountableRange<Int64>?
 
     /// Complete length of the representation from which the range has been extracted.
     /// Nil value indicates the complete length is unknown

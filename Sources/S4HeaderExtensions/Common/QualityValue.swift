@@ -60,7 +60,8 @@ extension QualityValue: HeaderValueInitializable {
 
                 // Create Q Value first, and remove that value from the array
                 let qString = split.remove(at: qIndex)
-                let floatString = qString[qString.startIndex.advanced(by: 2)..<qString.endIndex]
+                let startIndex = qString.index(qString.startIndex, offsetBy: 2)
+                let floatString = qString[startIndex..<qString.endIndex]
 
                 guard let qFloat = Float(floatString) else {
                     return nil
