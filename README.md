@@ -29,6 +29,7 @@ Request Headers:
 - Accept-Charset
 - Accept-Encoding
 - Accept-Language
+- Authorization
 - Expect
 - From
 - Host
@@ -51,6 +52,7 @@ Response Headers:
 - Retry-After
 - Server
 - Vary
+- WWW-Authenticate
 
 Entity Headers:
 - Allow
@@ -59,16 +61,15 @@ Entity Headers:
 - Content-Length
 - Content-Location
 - Content-Range
+- Content-Type
 - Expires
 - Last-Modified
 
 Not Yet Implemented:
-- Authorization
-- Content-Type
 - Proxy-Authenticate
 - Proxy-Authorization
 - Warning
-- WWW-Authenticate
+
 
 
 ## Adding New Headers
