@@ -1,13 +1,4 @@
-//
-//  Accept.swift
-//  ZewoHeaderExtensions
-//
-//  Created by Kevin Sullivan on 2/25/16.
-//  Copyright © 2016 Kevin Sullivan. All rights reserved.
-//
-
 import S4
-
 
 extension Headers {
 	
@@ -29,12 +20,12 @@ extension Headers {
 	
 		## Examples
 			var request =  Request()
-			request.accept = [QualityValue(item: MediaType(string: "text/html"))]
+			request.accept = [QualityValue(item: MIMEType(string: "text/html"))]
 	
 			var request =  Request()
 			request.accept = [
-				QualityValue(item: MediaType(string: "text/html")),
-				QualityValue(item: MediaType(string: "text/plain"), quality: 500)
+				QualityValue(item: MIMEType(string: "text/html")),
+				QualityValue(item: MIMEType(string: "text/plain"), quality: 500)
 			]
 	
 	

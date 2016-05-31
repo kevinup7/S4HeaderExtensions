@@ -1,11 +1,3 @@
-//
-//  ContentType.swift
-//  ZewoHeaderExtensions
-//
-//  Created by Kevin Sullivan on 2/26/16.
-//  Copyright © 2016 Kevin Sullivan. All rights reserved.
-//
-
 import S4
 
 extension Headers {
@@ -25,7 +17,7 @@ extension Headers {
 	
 	## Examples
 		var response = Response()
-		response.contentType = MediaType(type: "text", subtype: "html", parameters: ["charset": "ISO-8859-4"])
+		response.contentType = MIMEType(type: "text", subtype: "html", parameters: ["charset": "ISO-8859-4"])
 	
 	- seealso: [RFC7231](https://tools.ietf.org/html/rfc7231#section-3.1.1.5)
 	*/

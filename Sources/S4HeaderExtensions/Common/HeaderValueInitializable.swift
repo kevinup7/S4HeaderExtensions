@@ -6,7 +6,7 @@ public protocol HeaderValueInitializable {
 }
 
 extension HeaderValueInitializable {
-    public static func values(fromHeader header: Header?) -> [Self]? {
+    static func values(fromHeader header: Header?) -> [Self]? {
         guard let header = header else {
             return nil
         }
