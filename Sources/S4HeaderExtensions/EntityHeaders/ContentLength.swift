@@ -24,13 +24,10 @@ extension Headers {
      */
     public var contentLength: Int? {
         get {
-            if let headerValue = headers["Content-Length"]?.first {
-                return Int(headerValue)
-            }
-            return nil
+            return headers["Content-Length"].flatMap({ Int($0) })
         }
         set {
-            headers["Content-Length"] = newValue?.description.header
+            headers["Content-Length"] = newValue?.description.headerValue
         }
     }
 }

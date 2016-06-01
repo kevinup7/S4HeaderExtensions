@@ -22,13 +22,10 @@ extension Headers {
     */
     public var wwwAuthenticate: String? {
         get {
-            if let headerValue = headers["WWW-Authenticate"]?.first {
-                return headerValue
-            }
-            return nil
+            return headers["WWW-Authenticate"]
         }
         set {
-            headers["WWW-Authenticate"] = newValue?.header
+            headers["WWW-Authenticate"] = newValue?.headerValue
         }
     }
 }

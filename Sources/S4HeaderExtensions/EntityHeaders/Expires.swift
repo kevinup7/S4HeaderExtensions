@@ -24,13 +24,10 @@ extension Headers {
     */
     public var expires: NSDate? {
         get {
-            if let headerValue = headers["Expires"]?.first {
-                return NSDate.date(fromHeaderValue: headerValue)
-            }
-            return nil
+            return headers["Expires"].flatMap({ NSDate.date(fromHeaderValue: $0) })
         }
         set {
-            headers["Expires"] = newValue?.header
+            headers["Expires"] = newValue?.headerValue
         }
     }
 }

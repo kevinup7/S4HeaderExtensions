@@ -24,10 +24,10 @@ extension Headers {
     */
     public var server: String? {
         get {
-            return headers["Server"]?.first
+            return headers["Server"]
         }
         set {
-            headers["Server"] = newValue?.header
+            headers["Server"] = newValue?.headerValue
         }
     }
 }

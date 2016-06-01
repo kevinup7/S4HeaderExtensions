@@ -31,18 +31,18 @@ class CacheControlTests: XCTestCase {
 	}
 	
 	func testSingle() {
-		let single = Headers(["Cache-Control": ["no-cache"]])
+		let single = Headers(["Cache-Control": "no-cache"])
 		XCTAssert(single.cacheControl! == [.noCache])
 		
-		let singleWithValue = Headers(["Cache-Control": ["max-age=1000"]])
+		let singleWithValue = Headers(["Cache-Control": "max-age=1000"])
 		XCTAssert(singleWithValue.cacheControl! == [.maxAge(1000)])
 	}
 
     func testMultiple() {
-        let multiple = Headers(["Cache-Control": ["no-cache", "max-age=1000"]])
+        let multiple = Headers(["Cache-Control": "no-cache,max-age=1000"])
         XCTAssert(multiple.cacheControl! == [.noCache, .maxAge(1000)])
 
-        let multipleWithValues = Headers(["Cache-Control": ["max-stale=100", "max-age=1000"]])
+        let multipleWithValues = Headers(["Cache-Control": "max-stale=100,max-age=1000"])
         XCTAssert(multipleWithValues.cacheControl! == [.maxStale(100), .maxAge(1000)])
     }
 }

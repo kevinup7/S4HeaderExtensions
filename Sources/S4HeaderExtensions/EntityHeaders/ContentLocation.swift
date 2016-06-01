@@ -27,13 +27,10 @@ extension Headers {
     */
     public var contentLocation: String? {
         get {
-            if let headerValue = headers["Content-Location"]?.first {
-                return String(headerValue: headerValue)
-            }
-            return nil
+            return headers["Content-Location"]
         }
         set {
-            headers["Content-Location"] = newValue?.header
+            headers["Content-Location"] = newValue?.headerValue
         }
     }
 }

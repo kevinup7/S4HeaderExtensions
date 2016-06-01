@@ -27,10 +27,10 @@ extension Headers {
 	*/
 	public var contentRange: ContentRangeType? {
 		get {
-			return headers["Content-Range"]?.first.flatMap({ ContentRangeType(headerValue: $0) })
+			return headers["Content-Range"].flatMap({ ContentRangeType(headerValue: $0) })
 		}
 		set {
-			headers["Content-Range"] = newValue?.header
+			headers["Content-Range"] = newValue?.headerValue
 		}
 	}
 }

@@ -28,7 +28,7 @@ extension Headers {
             return String.values(fromHeader: headers["Content-Language"])
         }
         set {
-            headers["Content-Language"] = newValue?.header
+            headers["Content-Language"] = newValue?.headerValue
         }
     }
 }

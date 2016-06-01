@@ -24,7 +24,7 @@ extension Headers {
             return QualityValue<Encoding>.values(fromHeader: headers["TE"])
         }
         set {
-            headers["TE"] = newValue?.header
+            headers["TE"] = newValue?.headerValue
         }
     }
 }

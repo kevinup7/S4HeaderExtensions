@@ -36,7 +36,7 @@ extension Headers {
             return QualityValue<MIMEType>.values(fromHeader: headers["Allow"])
 		}
 		set {
-			headers["Allow"] = newValue?.header
+			headers["Allow"] = newValue?.headerValue
 		}
 	}
 }

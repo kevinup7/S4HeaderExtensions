@@ -6,7 +6,7 @@ import S4
 class ContentLocationTests: XCTestCase {
 
     func testContentLocation() {
-        let headers = Headers(["Content-Location": ["/index.htm"]])
+        let headers = Headers(["Content-Location": "/index.htm"])
         XCTAssert(headers.contentLocation! == "/index.htm")
     }
 }

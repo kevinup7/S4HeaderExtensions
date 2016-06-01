@@ -27,7 +27,7 @@ extension Headers {
             return String.values(fromHeader: headers["Trailer"])
         }
         set {
-            headers["Trailer"] = newValue?.header
+            headers["Trailer"] = newValue?.headerValue
         }
     }
 }

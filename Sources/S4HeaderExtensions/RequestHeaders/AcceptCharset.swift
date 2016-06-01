@@ -33,7 +33,7 @@ extension Headers {
             return QualityValue<String>.values(fromHeader: headers["Accept-Charset"])
         }
         set {
-            headers["Accept-Charset"] = newValue?.header
+            headers["Accept-Charset"] = newValue?.headerValue
         }
     }
 }

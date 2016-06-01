@@ -36,13 +36,10 @@ extension Headers {
     */
     public var ifRange: IfRange? {
         get {
-            if let headerValue = headers["If-Range"]?.first {
-                return IfRange(headerValue: headerValue)
-            }
-            return nil
+            return headers["If-Range"].flatMap({ IfRange(headerValue: $0) })
         }
         set {
-            headers["If-Range"] = newValue?.header
+            headers["If-Range"] = newValue?.headerValue
         }
     }
 }

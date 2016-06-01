@@ -33,7 +33,7 @@ extension Headers {
             return UpgradeProtocol.values(fromHeader: headers["Upgrade"])
         }
         set {
-            headers["Upgrade"] = newValue?.header
+            headers["Upgrade"] = newValue?.headerValue
         }
     }
 }

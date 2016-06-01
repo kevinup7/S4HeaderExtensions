@@ -30,7 +30,7 @@ extension Headers {
             return CacheControl.values(fromHeader: headers["Cache-Control"])
         }
         set {
-            headers["Cache-Control"] = newValue?.header
+            headers["Cache-Control"] = newValue?.headerValue
         }
     }
 }

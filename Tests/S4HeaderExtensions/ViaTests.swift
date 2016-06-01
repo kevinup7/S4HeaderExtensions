@@ -26,7 +26,7 @@ class ViaTests: XCTestCase {
         let via = ViaHeader(protocolName: "HTTP", protocolVersion: "1.0", receivedBy: "fred")
         let via2 = ViaHeader(protocolName: "HTTP", protocolVersion: "1.1", receivedBy: "nowhere.com", comment: "(Apache/1.1)")
 
-        let headers = ViaHeader.values(fromHeader: ["1.0 fred", "1.1 nowhere.com (Apache/1.1)"])!
+        let headers = ViaHeader.values(fromHeader: "1.0 fred,1.1 nowhere.com (Apache/1.1)")!
 
         XCTAssert(headers == [via, via2])
     }

@@ -6,13 +6,13 @@ import S4
 class ContentRangeTests: XCTestCase {
 
     func testBytesType() {
-        let headers = Headers(["Content-Range": ["bytes 42-1233/1234"]])
+        let headers = Headers(["Content-Range": "bytes 42-1233/1234"])
         let range = ContentRangeType.bytes(ContentRange(range: 42 ..< 1233, totalLength: 1234))
         XCTAssert(headers.contentRange! == range)
     }
 
     func testCustomType() {
-        let headers = Headers(["Content-Range": ["foo bar"]])
+        let headers = Headers(["Content-Range": "foo bar"])
         let range = ContentRangeType.custom(unit: "foo", value: "bar")
         XCTAssert(headers.contentRange! == range)
     }

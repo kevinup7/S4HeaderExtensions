@@ -30,7 +30,7 @@ extension Headers {
             return nil
         }
         set {
-            headers["Accept-Language"] = newValue?.header
+            headers["Accept-Language"] = newValue?.headerValue
         }
     }
 }

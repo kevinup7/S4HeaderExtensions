@@ -6,25 +6,29 @@ import S4
 class HeaderParsingTests: XCTestCase {
 
     func testSingle() {
-        let headers = Headers(["foo": ["bar1"]])
+        let headers = Headers(["foo": "bar1"])
         XCTAssert(headers.foo! == [.bar1])
     }
 
-    func testMultiple() {
-        let headers = Headers(["foo": ["bar1", "bar2"]])
+    func testMultipleWithSpace() {
+        let headers = Headers(["foo": "bar1, bar2"])
         XCTAssert(headers.foo! == [.bar1, .bar2])
     }
 
-    func testMixed() {
-        let headers = Headers(["foo": ["bar1, bar2", "bar3"]])
-        XCTAssert(headers.foo! == [.bar1, .bar2, .bar3])
+    func testMultiple() {
+        let headers = Headers(["foo": "bar1,bar2"])
+        XCTAssert(headers.foo! == [.bar1, .bar2])
+    }
+
+    func testFailure() {
+        let headers = Headers(["foo": "bar1,bar2,bar3"])
+        XCTAssert(headers.foo! == [.bar1, .bar2])
     }
 }
 
 enum TestHeader: String, HeaderValueInitializable, HeaderValueRepresentable {
     case bar1
     case bar2
-    case bar3
 
     init?(headerValue: String) {
         guard let header = TestHeader(rawValue: headerValue) else {
@@ -44,7 +48,7 @@ extension Headers {
             return TestHeader.values(fromHeader: headers["foo"])
         }
         set {
-            headers["foo"] = newValue?.header
+            headers["foo"] = newValue?.headerValue
         }
     }
 }

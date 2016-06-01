@@ -31,10 +31,10 @@ extension Headers {
     */
     public var eTag: EntityTag? {
         get {
-            return headers["ETag"]?.first.flatMap({ EntityTag(headerValue: $0) })
+            return headers["ETag"].flatMap({ EntityTag(headerValue: $0) })
         }
         set {
-            headers["Etag"] = newValue?.header
+            headers["Etag"] = newValue?.headerValue
         }
     }
 }

@@ -24,10 +24,10 @@ extension Headers {
     */
     public var userAgent: String? {
         get {
-            return headers["User-Agent"]?.first
+            return headers["User-Agent"]
         }
         set {
-            headers["User-Agent"] = newValue?.header
+            headers["User-Agent"] = newValue?.headerValue
         }
     }
 }

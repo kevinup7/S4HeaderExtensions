@@ -21,10 +21,10 @@ extension Headers {
     */
     public var location: String? {
         get {
-            return headers["Location"]?.first
+            return headers["Location"]
         }
         set {
-            headers["Host"] = newValue?.header
+            headers["Host"] = newValue?.headerValue
         }
     }
 }

@@ -32,10 +32,10 @@ extension Headers {
     */
     public var range: RangeType? {
         get {
-            return headers["Range"]?.first.flatMap({ RangeType(headerValue: $0) })
+            return headers["Range"].flatMap({ RangeType(headerValue: $0) })
         }
         set {
-            headers["Range"] = newValue?.header
+            headers["Range"] = newValue?.headerValue
         }
     }
 }
@@ -50,10 +50,6 @@ public enum RangeType: Equatable {
 
 extension RangeType: HeaderValueInitializable {
     public init?(headerValue: String) {
-        guard headerValue != "" else {
-            return nil
-        }
-
         let split = headerValue.components(separatedBy: "=")
         guard split.count == 2 else {
             return nil
@@ -63,7 +59,7 @@ extension RangeType: HeaderValueInitializable {
         let valueString = split[1]
 
         if unitString == "bytes" {
-            guard let values = BytesRange.values(fromHeader: Header(valueString)) else {
+            guard let values = BytesRange.values(fromHeader: valueString) else {
                 return nil
             }
 
@@ -80,7 +76,13 @@ extension RangeType: HeaderValueInitializable {
 
 extension RangeType: HeaderValueRepresentable {
     public var headerValue: String {
-        return ""
+        switch self {
+        case .bytes(let ranges):
+            let rangesString = ranges.map({ $0.headerValue }).joined(separator: ",")
+            return "bytes=\(rangesString)"
+        case .custom(unit: let unit, value: let value):
+            return "\(unit)=\(value)"
+        }
     }
 }
 

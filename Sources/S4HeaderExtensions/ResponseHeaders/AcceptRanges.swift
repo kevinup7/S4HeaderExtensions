@@ -22,10 +22,10 @@ extension Headers {
     */
     public var acceptRanges: AcceptRanges? {
         get {
-            return headers["Accept-Ranges"]?.first.flatMap({ AcceptRanges(headerValue: $0) })
+            return headers["Accept-Ranges"].flatMap({ AcceptRanges(headerValue: $0) })
         }
         set {
-            headers["Accept-Ranges"] = newValue?.header
+            headers["Accept-Ranges"] = newValue?.headerValue
         }
     }
 }

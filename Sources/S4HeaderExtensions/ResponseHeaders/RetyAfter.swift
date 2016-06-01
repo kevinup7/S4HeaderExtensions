@@ -31,13 +31,10 @@ extension Headers {
     */
     public var retryAfter: RetryAfter? {
         get {
-            if let headerValue = headers["Retry-After"]?.first {
-                return RetryAfter(headerValue: headerValue)
-            }
-            return nil
+            return headers["Retry-After"].flatMap({ RetryAfter(headerValue: $0) })
         }
         set {
-            headers["Retry-After"] = newValue?.header
+            headers["Retry-After"] = newValue?.headerValue
         }
     }
 }

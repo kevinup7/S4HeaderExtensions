@@ -23,10 +23,10 @@ extension Headers {
     */
     public var referer: String? {
         get {
-            return headers["Referer"]?.first
+            return headers["Referer"]
         }
         set {
-            headers["Referer"] = newValue?.header
+            headers["Referer"] = newValue?.headerValue
         }
     }
 }

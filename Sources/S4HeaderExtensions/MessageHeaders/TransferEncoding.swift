@@ -28,7 +28,7 @@ extension Headers {
             return Encoding.values(fromHeader: headers["Transfer-Encoding"])
         }
         set {
-            headers["Transfer-Encoding"] = newValue?.header
+            headers["Transfer-Encoding"] = newValue?.headerValue
         }
     }
 }

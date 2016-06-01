@@ -21,13 +21,10 @@ extension Headers {
     */
     public var maxForwards: Int? {
         get {
-            if let headerValue = headers["Max-Forwards"]?.first {
-                return Int(headerValue)
-            }
-            return nil
+            return headers["Max-Forwards"].flatMap({ Int($0) })
         }
         set {
-            headers["Max-Forwards"] = newValue?.description.header
+            headers["Max-Forwards"] = newValue?.description.headerValue
         }
     }
 }

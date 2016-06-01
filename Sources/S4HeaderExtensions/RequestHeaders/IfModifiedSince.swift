@@ -22,13 +22,10 @@ extension Headers {
     */
     public var ifModifiedSince: NSDate? {
         get {
-            if let headerValue = headers["If-Modified-Since"]?.first {
-                return NSDate.date(fromHeaderValue: headerValue)
-            }
-            return nil
+            return headers["If-Modified-Since"].flatMap({ NSDate.date(fromHeaderValue: $0) })
         }
         set {
-            headers["If-Modified-Since"] = newValue?.header
+            headers["If-Modified-Since"] = newValue?.headerValue
         }
     }
 }

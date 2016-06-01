@@ -39,7 +39,7 @@ extension Headers {
             return ConnectionType.values(fromHeader: headers["Connection"])
         }
         set {
-            headers["Connection"] = newValue?.header
+            headers["Connection"] = newValue?.headerValue
         }
     }
 }

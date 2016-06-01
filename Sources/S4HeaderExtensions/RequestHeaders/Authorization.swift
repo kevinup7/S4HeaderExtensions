@@ -28,13 +28,10 @@ extension Headers {
     */
     public var authorization: String? {
         get {
-            if let headerValue = headers["Authorization"]?.first {
-                return headerValue
-            }
-            return nil
+            return headers["Authorization"]
         }
         set {
-            headers["Authorization"] = newValue?.header
+            headers["Authorization"] = newValue?.headerValue
         }
     }
 }

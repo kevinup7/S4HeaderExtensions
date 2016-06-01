@@ -21,13 +21,10 @@ extension Headers {
     */
     public var pragma: Pragma? {
         get {
-            if let headerValue = headers["Pragma"]?.first {
-                return Pragma(headerValue: headerValue)
-            }
-            return nil
+            return headers["Pragma"].flatMap({ Pragma(headerValue: $0) })
         }
         set {
-            headers["Pragma"] = newValue?.header
+            headers["Pragma"] = newValue?.headerValue
         }
     }
 }

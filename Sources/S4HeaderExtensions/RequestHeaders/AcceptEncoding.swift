@@ -36,7 +36,7 @@ extension Headers {
             return QualityValue<Encoding>.values(fromHeader: headers["Accept-Encoding"])
         }
         set {
-            headers["Accept-Encoding"] = newValue?.header
+            headers["Accept-Encoding"] = newValue?.headerValue
         }
     }
 }

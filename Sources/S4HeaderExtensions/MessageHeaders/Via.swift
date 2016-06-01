@@ -27,7 +27,7 @@ extension Headers {
             return ViaHeader.values(fromHeader: headers["Via"])
         }
         set {
-            headers["Via"] = newValue?.header
+            headers["Via"] = newValue?.headerValue
         }
     }
 }

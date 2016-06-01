@@ -18,7 +18,7 @@ class ConnectionTests: XCTestCase {
     }
     
     func testHeadersProperty() {
-        let headers = Headers(["Connection" : ["keep-alive"]])
+        let headers = Headers(["Connection" : "keep-alive"])
         XCTAssert(headers.connection! == [ConnectionType.keepAlive])
     }
 }

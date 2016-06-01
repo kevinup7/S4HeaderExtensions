@@ -19,13 +19,10 @@ extension Headers {
     */
     public var age: Int? {
         get {
-            if let headerValue = headers["Age"]?.first {
-                return Int(headerValue)
-            }
-            return nil
+            return headers["Age"].flatMap({ Int($0) })
         }
         set {
-            headers["Age"] = newValue?.description.header
+            headers["Age"] = newValue?.description.headerValue
         }
     }
 }

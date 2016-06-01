@@ -25,13 +25,10 @@ extension Headers {
     */
     public var host: URI? {
         get {
-            if let headerValue = headers["Host"]?.first {
-                return URI(headerValue: headerValue)
-            }
-            return nil
+            return headers["Host"].flatMap({ URI(headerValue: $0) })
         }
         set {
-            headers["Host"] = newValue?.header
+            headers["Host"] = newValue?.headerValue
         }
     }
 }

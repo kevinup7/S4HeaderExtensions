@@ -19,13 +19,10 @@ extension Headers {
     */
     public var date: NSDate? {
         get {
-            if let headerValue = headers["Date"]?.first {
-                return NSDate.date(fromHeaderValue: headerValue)
-            }
-            return nil
+            return headers["Date"].flatMap({ NSDate.date(fromHeaderValue: $0) })
         }
         set {
-            headers["Date"] = newValue?.header
+            headers["Date"] = newValue?.headerValue
         }
     }
 }

@@ -11,7 +11,7 @@ class AcceptRangesTests: XCTestCase {
     }
 
     func testHeaders() {
-        let headers = Headers(["Accept-Ranges": ["bytes"]])
+        let headers = Headers(["Accept-Ranges": "bytes"])
         XCTAssert(headers.acceptRanges! == .bytes)
     }
 }

@@ -6,7 +6,7 @@ import S4
 class WWWAuthenticateTests: XCTestCase {
 
     func testSingle() {
-        let headers = Headers(["WWW-Authenticate": ["Newauth realm=\"apps\""]])
+        let headers = Headers(["WWW-Authenticate": "Newauth realm=\"apps\""])
         XCTAssert(headers.wwwAuthenticate! == "Newauth realm=\"apps\"")
     }
 }

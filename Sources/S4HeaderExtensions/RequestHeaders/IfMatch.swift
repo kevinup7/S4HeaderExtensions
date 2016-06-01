@@ -38,12 +38,12 @@ extension Headers {
     public var ifMatch: EntityTagMatch? {
         get {
             if let headerValues = headers["If-Match"] {
-                return EntityTagMatch(header: headerValues)
+                return EntityTagMatch(headerValue: headerValues)
             }
             return nil
         }
         set {
-            headers["If-Match"] = newValue?.header
+            headers["If-Match"] = newValue?.headerValue
         }
     }
 }

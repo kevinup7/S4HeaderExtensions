@@ -19,13 +19,10 @@ extension Headers {
     */
     public var expect: Expect? {
         get {
-            if let headerValue = headers["Expect"]?.first {
-                return Expect(headerValue: headerValue)
-            }
-            return nil
+            return headers["Expect"].flatMap({ Expect(headerValue: $0) })
         }
         set {
-            headers["Expect"] = newValue?.header
+            headers["Expect"] = newValue?.headerValue
         }
     }
 }

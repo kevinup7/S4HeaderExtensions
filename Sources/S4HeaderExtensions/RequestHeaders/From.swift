@@ -18,13 +18,10 @@ extension Headers {
     */
     public var from: String? {
         get {
-            if let headerValue = headers["From"]?.first {
-                return headerValue
-            }
-            return nil
+            return headers["From"]
         }
         set {
-            headers["From"] = newValue?.header
+            headers["From"] = newValue?.headerValue
         }
     }
 }

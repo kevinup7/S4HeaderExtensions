@@ -23,13 +23,10 @@ extension Headers {
 	*/
 	public var contentType: MIMEType? {
 		get {
-			if let headerValue = headers["Content-Type"]?.first {
-				return MIMEType(headerValue: headerValue)
-			}
-			return nil
+            return headers["Content-Type"].flatMap({ MIMEType(headerValue: $0) })
 		}
 		set {
-			headers["Content-Type"] = newValue?.header
+			headers["Content-Type"] = newValue?.headerValue
 		}
 	}
 }
