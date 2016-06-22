@@ -3,13 +3,13 @@ import S4
 extension Headers {
 
     /**
-        The "Connection" header field allows the sender to indicate desired
+        The `Connection` header field allows the sender to indicate desired
         control options for the current connection.  In order to avoid
         confusing downstream recipients, a proxy or gateway MUST remove or
         replace any received connection options before forwarding the
         message.
 
-        When a header field aside from Connection is used to supply control
+        When a header field aside from `Connection` is used to supply control
         information for or about the current connection, the sender MUST list
         the corresponding field-name within the Connection header field.  A
         proxy or gateway MUST parse a received Connection header field before
@@ -44,10 +44,27 @@ extension Headers {
     }
 }
 
+/**
+    Values that can be used in the `Connection` header field.
+ 
+    - close: close `Connection` value
+ 
+    - keepAlive: keep-alive `Connection` value
+ 
+    - customHeader: Another header field that should be used in place of `Connection`
+ 
+    - note: When a header field aside from `Connection` is used to supply control
+    information for or about the current connection, the sender MUST list
+    the corresponding field-name within the Connection header field by using the
+    customHeader value.
+
+
+    - seealso: [RFC7230](http://tools.ietf.org/html/rfc7230#section-6.1)
+*/
 public enum ConnectionType: Equatable {
     case close
     case keepAlive
-    case connectionHeader(CaseInsensitiveString)
+    case customHeader(CaseInsensitiveString)
 }
 
 extension ConnectionType: HeaderValueInitializable {
@@ -59,7 +76,7 @@ extension ConnectionType: HeaderValueInitializable {
         case "keep-alive":
             self = .keepAlive
         default:
-            self = .connectionHeader(lower)
+            self = .customHeader(lower)
         }
     }
 }
@@ -71,7 +88,7 @@ extension ConnectionType: HeaderValueRepresentable {
             return "close"
         case .keepAlive:
             return "keep-alive"
-        case .connectionHeader(let headerName):
+        case .customHeader(let headerName):
             return headerName.description
         }
     }

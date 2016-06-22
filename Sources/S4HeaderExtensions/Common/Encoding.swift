@@ -1,5 +1,25 @@
 import S4
 
+/**
+    Values commonly used in encoding header fields.
+
+    - chunked: chunked `Encoding` value
+
+    - compress: compress `Encoding` value
+
+    - deflate: deflate `Encoding` value
+
+    - gzip: gzip `Encoding` value
+
+    - identity: identity `Encoding` value
+
+    - custom: A custom `Encoding` value.
+
+    
+    - note: Not all values can be used in every encoding header field.
+
+    - seealso: [RFC7230](http://tools.ietf.org/html/rfc7230#section-6.1)
+*/
 public enum Encoding: Equatable {
     case chunked
     case compress

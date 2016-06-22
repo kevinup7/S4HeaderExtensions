@@ -8,13 +8,13 @@ class ConnectionTests: XCTestCase {
     func testStringInit() {
         XCTAssert(ConnectionType.close == ConnectionType(headerValue: "close"))
         XCTAssert(ConnectionType.keepAlive == ConnectionType(headerValue: "keep-alive"))
-        XCTAssert(ConnectionType.connectionHeader("headerName") == ConnectionType(headerValue: "headerName"))
+        XCTAssert(ConnectionType.customHeader("headerName") == ConnectionType(headerValue: "headerName"))
     }
     
     func testEquality() {
         XCTAssert(ConnectionType.close != ConnectionType.keepAlive)
-        XCTAssert(ConnectionType.close != ConnectionType.connectionHeader("headerName"))
-        XCTAssert(ConnectionType.keepAlive != ConnectionType.connectionHeader("headerName"))
+        XCTAssert(ConnectionType.close != ConnectionType.customHeader("headerName"))
+        XCTAssert(ConnectionType.keepAlive != ConnectionType.customHeader("headerName"))
     }
     
     func testHeadersProperty() {

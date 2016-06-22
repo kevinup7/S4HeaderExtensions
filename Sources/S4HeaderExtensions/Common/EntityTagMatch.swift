@@ -1,5 +1,13 @@
 import S4
 
+/**
+    Used in `If-Match` and `If-None-Match` to describe pre-conditions that
+    must be met on a `Request`.
+ 
+    - any: Represented by a `*` value
+    
+    - tags: An array of `EntityTag` objects to check for a match.
+*/
 public enum EntityTagMatch: Equatable {
     case any
     case tags([EntityTag])
