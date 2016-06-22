@@ -3,7 +3,7 @@ public struct MIMEType: Equatable {
     public let subtype: String
     public let parameters: [String: String]?
 
-    init(type: String, subtype: String, parameters:[String: String]? = nil) {
+    public init(type: String, subtype: String, parameters:[String: String]? = nil) {
         self.type = type
         self.subtype = subtype
         self.parameters = parameters
