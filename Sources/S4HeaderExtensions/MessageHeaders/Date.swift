@@ -13,13 +13,13 @@ extension Headers {
 
         ## Examples
             var response = Response()
-            response.headers.date = NSDate()
+            response.headers.date = Date()
 
         - seealso: [RFC7231](https://tools.ietf.org/html/rfc7231#section-7.1.1.2)
     */
-    public var date: NSDate? {
+    public var date: Date? {
         get {
-            return headers["Date"].flatMap({ NSDate.date(fromHeaderValue: $0) })
+            return headers["Date"].flatMap({ Date(headerValue: $0) })
         }
         set {
             headers["Date"] = newValue?.headerValue

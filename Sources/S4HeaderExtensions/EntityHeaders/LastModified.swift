@@ -15,13 +15,13 @@ extension Headers {
 
         ## Examples
             var response =  Response()
-            response.headers.lastModified = NSDate()
+            response.headers.lastModified = Date()
 
         - seealso: [RFC7232](https://tools.ietf.org/html/rfc7232#section-2.2)
     */
-    public var lastModified: NSDate? {
+    public var lastModified: Date? {
         get {
-            return headers["Last-Modified"].flatMap({ NSDate.date(fromHeaderValue: $0) })
+            return headers["Last-Modified"].flatMap({ Date(headerValue: $0) })
         }
         set {
             headers["Last-Modified"] = newValue?.headerValue

@@ -24,7 +24,7 @@ extension Headers {
             response.headers.retryAfter = .seconds(120)
 
             var response = Response()
-            response.headers.retryAfter = .date(NSDate())
+            response.headers.retryAfter = .date(Date())
 
 
         - seealso: [RFC7231](http://tools.ietf.org/html/rfc7231#section-7.1.2)
@@ -41,14 +41,14 @@ extension Headers {
 
 public enum RetryAfter: Equatable {
     case seconds(Int)
-    case date(NSDate)
+    case date(Date)
 }
 
 extension RetryAfter: HeaderValueInitializable {
     public init?(headerValue: String) {
         if let seconds = Int(headerValue) {
             self = .seconds(seconds)
-        } else if let date = NSDate.date(fromHeaderValue: headerValue) {
+        } else if let date = Date(headerValue: headerValue) {
             self = .date(date)
         } else {
             return nil

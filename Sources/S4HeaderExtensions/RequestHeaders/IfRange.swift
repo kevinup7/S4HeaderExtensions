@@ -29,7 +29,7 @@ extension Headers {
             request.headers.ifRange = .Tag(EntityTag(tag: "xyzzy"))
 
             var request =  Request()
-            request.headers.ifRange = .Date(NSDate())
+            request.headers.ifRange = .Date(Date())
 
 
         - seealso: [RFC7232](https://tools.ietf.org/html/rfc7233#section-3.2)
@@ -46,14 +46,14 @@ extension Headers {
 
 public enum IfRange: Equatable {
     case tag(EntityTag)
-    case date(NSDate)
+    case date(Date)
 }
 
 extension IfRange: HeaderValueInitializable {
     public init?(headerValue: String) {
         if let tag = EntityTag(headerValue: headerValue) {
             self = .tag(tag)
-        } else if let date = NSDate.date(fromHeaderValue: headerValue) {
+        } else if let date = Date(headerValue: headerValue) {
             self = .date(date)
         } else {
             return nil

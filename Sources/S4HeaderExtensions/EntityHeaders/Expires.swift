@@ -18,13 +18,13 @@ extension Headers {
 
         ## Examples
             var response =  Response()
-            response.headers.expires = NSDate()
+            response.headers.expires = Date()
 
         - seealso: [RFC7234](https://tools.ietf.org/html/rfc7234#section-5.3)
     */
-    public var expires: NSDate? {
+    public var expires: Date? {
         get {
-            return headers["Expires"].flatMap({ NSDate.date(fromHeaderValue: $0) })
+            return headers["Expires"].flatMap({ Date(headerValue: $0) })
         }
         set {
             headers["Expires"] = newValue?.headerValue

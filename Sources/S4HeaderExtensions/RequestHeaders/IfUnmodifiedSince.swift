@@ -16,13 +16,13 @@ extension Headers {
 
         ## Examples
             var request = Request()
-            request.headers.ifUnmodifiedSince = NSDate()
+            request.headers.ifUnmodifiedSince = Date()
 
         - seealso: [RFC7232](https://tools.ietf.org/html/rfc7232#section-3.4)
     */
-    public var ifUnmodifiedSince: NSDate? {
+    public var ifUnmodifiedSince: Date? {
         get {
-            return headers["If-Unmodified-Since"].flatMap({ NSDate.date(fromHeaderValue: $0) })
+            return headers["If-Unmodified-Since"].flatMap({ Date(headerValue: $0) })
         }
         set {
             headers["If-Unmodified-Since"] = newValue?.headerValue
