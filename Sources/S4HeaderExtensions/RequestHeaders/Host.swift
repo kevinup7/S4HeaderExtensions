@@ -35,7 +35,7 @@ extension Headers {
 
 extension URI {
     public init(host: String, port: Int? = nil) {
-        self = URI(scheme: nil, userInfo: nil, host: host, port: port, path: nil, query: [:], fragment: nil)
+        self = URI(scheme: nil, userInfo: nil, host: host, port: port, path: nil, query: nil, fragment: nil)
     }
 }
 
@@ -49,9 +49,9 @@ extension URI: HeaderValueInitializable {
 
         if components.count == 2 {
             let port = Int(components[1])
-            self = URI(scheme: nil, userInfo: nil, host: components[0], port: port, path: nil, query: [:], fragment: nil)
+            self = URI(scheme: nil, userInfo: nil, host: components[0], port: port, path: nil, query: nil, fragment: nil)
         } else {
-            self = URI(scheme: nil, userInfo: nil, host: components[0], port: nil, path: nil, query: [:], fragment: nil)
+            self = URI(scheme: nil, userInfo: nil, host: components[0], port: nil, path: nil, query: nil, fragment: nil)
         }
     }
 }
